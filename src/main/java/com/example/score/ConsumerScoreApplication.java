@@ -15,12 +15,12 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.ImportResource;
 
 @MapperScan("com.example.score.dao")
-@ImportResource({ "classpath:bytetcc-supports-springcloud.xml" })
+//注释掉该语句，即不使用bytetcc，当以put 方式 调用http://localhost:8769/increase?accountId=1&score=100时，是可以正常回滚的
+//@ImportResource({ "classpath:bytetcc-supports-springcloud.xml" })
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.example.score")
 public class ConsumerScoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ConsumerScoreApplication.class, args);
-		//new SpringApplicationBuilder(ConsumerScoreApplication.class).bannerMode(Banner.Mode.OFF).web(true).run(args);
 	}
 }
